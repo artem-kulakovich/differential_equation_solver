@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-collections4-4.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/java_tools/jar_files/commons-collections4-4.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/java_tools/jar_files/xmlbeans-5.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/java_tools/jar_files/xmlbeans-xpath-2.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

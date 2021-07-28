@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bntu.fitr.controller.MainController">
+   <children>
+      <ImageView fitHeight="711.0" fitWidth="1177.0" layoutX="-67.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../templates/back3.jpg" />
+         </image>
+      </ImageView>
+      <Separator layoutX="26.0" layoutY="148.0" prefWidth="200.0" />
+      <Region layoutX="26.0" layoutY="49.0" prefHeight="386.0" prefWidth="200.0" style="-fx-border-color: white;" />
+      <TextField fx:id="equation" layoutX="41.0" layoutY="101.0" prefHeight="32.0" prefWidth="170.0" promptText="3*x+2*y+5" />
+      <Label layoutX="41.0" layoutY="57.0" text="Уравнение:">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#638f83" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="lowerLim" layoutX="40.0" layoutY="189.0" prefHeight="26.0" prefWidth="78.0" promptText="Нижний" />
+      <Label layoutX="40.0" layoutY="150.0" prefHeight="32.0" prefWidth="137.0" text="Промежуток:">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#387f35" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="upperLim" layoutX="138.0" layoutY="189.0" prefHeight="26.0" prefWidth="78.0" promptText="Верхний" />
+      <Label layoutX="41.0" layoutY="234.0" text="Шаг:">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ecffe0" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="step" layoutX="98.0" layoutY="237.0" prefHeight="26.0" prefWidth="114.0" promptText="0.1" />
+      <MenuBar layoutX="-5.0" layoutY="1.0" prefHeight="26.0" prefWidth="1207.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="excel" mnemonicParsing="false" onAction="#fillExcelFile" text="Записать данные в excel" />
+                  <MenuItem fx:id="excelOpener" mnemonicParsing="false" onAction="#openExcel" text="Просмотреть запись из excel " />
+                  <MenuItem fx:id="word" mnemonicParsing="false" onAction="#fillWordAction" text="Записать данные в word" />
+                  <MenuItem fx:id="wordOpener" mnemonicParsing="false" onAction="#openWord" text="Просмотреть запись из word" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="fillData" mnemonicParsing="false" onAction="#fillDataAction" text="Заполнить тестовыми данными" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#checkHelper" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="calculateBtn" layoutX="26.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#calculateEquationAction" prefHeight="32.0" prefWidth="200.0" text="Рассчитать">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#387f35" />
+                  <Stop color="#865eea" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Button>
+      <LineChart fx:id="lineChart" layoutX="253.0" layoutY="39.0" prefHeight="397.0" prefWidth="691.0" title="Линейный график">
+        <xAxis>
+          <NumberAxis label="X" side="BOTTOM" tickLabelFill="#d4df70" fx:id="xAxis1" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis1" label="Y" side="LEFT" tickLabelFill="#d3de71" />
+        </yAxis>
+      </LineChart>
+      <AreaChart fx:id="areaChart" layoutX="249.0" layoutY="39.0" prefHeight="398.0" prefWidth="682.0" title="График с площадью" visible="false">
+        <xAxis>
+          <NumberAxis label="X" side="BOTTOM" fx:id="xAxis2">
+               <tickLabelFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#387f35" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </tickLabelFill></NumberAxis>
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis2" label="Y" side="LEFT">
+               <tickLabelFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#387f35" />
+                        <Stop color="#d5de71" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </tickLabelFill></NumberAxis>
+        </yAxis>
+      </AreaChart>
+      <Separator layoutX="26.0" layoutY="283.0" prefHeight="3.0" prefWidth="200.0" />
+      <Label layoutX="30.0" layoutY="341.0" text="Y: " textFill="#cdd7c3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="yInput" layoutX="64.0" layoutY="344.0" promptText="y" />
+      <Label layoutX="33.0" layoutY="294.0" text="Начальное значение:">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#aedaa3" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="menuBtn" layoutX="26.0" layoutY="501.0" mnemonicParsing="false" onMouseClicked="#navigateToMenuBtn" prefHeight="32.0" prefWidth="200.0" text="В меню">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#387f35" />
+                  <Stop color="#9548d7" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Button>
+      <TextArea fx:id="table" layoutX="300.0" layoutY="489.0" prefHeight="186.0" prefWidth="640.0">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font></TextArea>
+      <Label fx:id="label1" layoutX="492.0" layoutY="444.0" text="Таблица результатов:">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#387f35" />
+                  <Stop color="#dfff0e" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Region layoutX="263.0" layoutY="47.0" prefHeight="386.0" prefWidth="699.0" style="-fx-border-color: white;" />
+      <Region layoutX="262.0" layoutY="441.0" prefHeight="250.0" prefWidth="699.0" style="-fx-border-color: white;" />
+   </children>
+</AnchorPane>
